@@ -3,13 +3,13 @@ SiSwati, or Swazi, is a Bantu language spoken by 4.7 million people in Eswatini,
 It is one of the African languages that are under-represented as far as NLP research is concerned. That necessitate this project. With it, we are building resources that can be used for research.
 
 
-We propose three works:
+# We propose three works:
 
   a. Siswati sentiment analysis dataset that is open-source.
   b. Python library for cleaning siSwati text.
   c. Pre-processing datasets for siSwatin (stopwords, slang words, typos, and borrowed words)
 
-Features
+## Features
 
   a. Removes all the stop words for siSwati and English.
   b. Replaces the common slang words with the approriate and official words.
@@ -20,16 +20,23 @@ Features
   g. Does the other typical preprocessing that are not language specific.
 
 
-Install
+## Install
 
+```bash
 pip install sswcleaner
+```
+
+```bash
 pip install git+https://github.com/BrianMsane/ssw-cleaner.git
+```
 
-Usage
+## Usage
 
+```python
 from sswcleaner import TextPreprocessor
 import pandas as pd
 
 df = pd.read_csv("Enter you dataset")
 preprocessor = TextPreprocessor()
 df['siSwati_text] = df['siSwati_text].apply(preprocessor.clean_text)
+```
