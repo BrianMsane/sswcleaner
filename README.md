@@ -31,9 +31,9 @@ pip install git+https://github.com/BrianMsane/ssw-cleaner.git
 from sswcleaner import TextPreprocessor
 import pandas as pd
 
-df = pd.read_csv("Enter you dataset")
+df = pd.read_csv("Enter you dataset!")
 preprocessor = TextPreprocessor()
-df['siSwati_text] = df['siSwati_text].apply(preprocessor.clean_text)
+df['siSwati_text'] = df['siSwati_text'].apply(preprocessor.clean_text)
 
 ```
 
