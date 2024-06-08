@@ -68,7 +68,7 @@ class TextPreprocessor:
             8. Remove HTML tags and hyperlinks.
             9. Adds 'i' at the end of words without a vowel at the end.
         """
-        try:
+        try:            
             text = text.lower()
             text = self.remove_extra_spaces(text)
             text = self.remove_links(text)
