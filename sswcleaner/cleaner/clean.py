@@ -8,7 +8,6 @@ with specific functionalities tailored for siSwati text.
 
 import sys
 import re
-import logging
 import string
 import pandas as pd
 import nltk
@@ -69,14 +68,13 @@ class TextPreprocessor:
             8. Remove HTML tags and hyperlinks.
             9. Adds 'i' at the end of words without a vowel at the end.
         """
-
         try:            
             text = text.lower()
             text = self.remove_extra_spaces(text)
+            text = self.remove_links(text)
             text = self.remove_emojis(text)
             text = self.remove_emoticons(text)
             text = self.remove_tags(text)
-            text = self.remove_links(text)
             text = self.remove_unicode_character(text)
             text = self.remove_punctuation_marks(text)
             text = self.remove_adjacent_vowels(text)
@@ -92,7 +90,10 @@ class TextPreprocessor:
 
 
     def remove_punctuation_marks(self, text: str) -> str:
-        return text.translate(str.maketrans('', '', string.punctuation))
+        try:
+            return text.translate(str.maketrans('', '', string.punctuation))
+        except Exception as e:
+            raise e
 
     def remove_numbers(self, text: str) -> str:
         try:
