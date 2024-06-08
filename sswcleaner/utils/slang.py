@@ -14,6 +14,8 @@ SLANG = [
     ['kaso', 'kanjena'],
     ['kanje', 'kanjena'],
     ['shem', ''],
-    ['oh', '']
+    ['oh', ''],
+    ["nedi", "kepha"],
+    ['spani', 'umsebenti']
 
 ]

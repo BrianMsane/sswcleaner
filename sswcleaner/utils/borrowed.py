@@ -16,7 +16,7 @@ BORROWED = [
     ['baba', 'babe'],
     ['nurse', 'nesi'],
     ['politics', 'politiki'],
-    ['profeth', 'umbholofidi'],
+    ['prophet', 'umbholofidi'],
     ['scheme', 'sikimu'],
     ['messiah', 'mesiya'],
     ['genes', ''],

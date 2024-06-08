@@ -1,6 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./utils/",
-        "./cleaner/"
+        "./cleaner/",
+        "./sswcleaner/utils/"
     ]
 }
