@@ -13,8 +13,8 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
-sys.path.append("../utils/")
-import stopwords as stop
+sys.path.append("../utils")
+import utils.stopwords as stop
 
 nltk.download('punkt')
 nltk.download('stopwords')
