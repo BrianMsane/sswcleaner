@@ -5,16 +5,12 @@ This module provides a class and methods for preprocessing and cleaning text dat
 with specific functionalities tailored for siSwati text.
 """
 
-
-import sys
 import re
 import string
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize
-sys.path.append("../utils")
-import utils.stopwords as stop
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -33,13 +29,14 @@ class TextPreprocessor:
     def __init__(self):
         try:
             self.stopwords = list(set(stopwords.words('english')))
-            self.stopwords.extend(stop.STOPWORDS)
-
+            
             path = '../data/'
-            slang_data = pd.read_csv(path + 'Slang.csv', usecols=['slang', 'meaning'])
-            typo_data = pd.read_csv(path + 'Typo.csv', usecols=['typo', 'correct_word'])
-            borrowed_data = pd.read_csv(path + 'Borrowed.csv', usecols=['foreign', 'siswati_version'])
-
+            stop_data = pd.read_csv(path+"Stopwords.csv", usecols=['stopwords'])
+            slang_data = pd.read_csv(path+'Slang.csv', usecols=['slang', 'meaning'])
+            typo_data = pd.read_csv(path+'Typo.csv', usecols=['typo', 'correct_word'])
+            borrowed_data = pd.read_csv(path+'Borrowed.csv', usecols=['foreign', 'siswati_version'])
+            
+            self.stopwords.extend((stop_data['stopwords'].astype(str)).to_list())
             self.slang_correction_map = dict(zip(slang_data['slang'].astype(str), slang_data['meaning'].astype(str)))
             self.typo_correction_map = dict(zip(typo_data['typo'].astype(str), typo_data['correct_word'].astype(str)))
             self.borrowed_correction_map = dict(zip(borrowed_data['foreign'].astype(str), borrowed_data['siswati_version'].astype(str)))
