@@ -1,1 +1,1 @@
-from .cleaner import TextPreprocessor
+from cleaner import TextPreprocessor
