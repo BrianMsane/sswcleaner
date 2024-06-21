@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sswcleaner
-Version: 0.1.2
+Version: 0.1.5
 Summary: SISWATI TEXT CLEANING LIBRARY FOR NLP TASKS
 Home-page: https://github.com/BrianMsane/SiSwati-Project.git
 Author: BrianMsane
@@ -49,7 +49,7 @@ pip install git+https://github.com/BrianMsane/ssw-cleaner.git
 ## Usage
 
 ```python
-from sswcleaner import TextPreprocessor
+from sswcleaner.cleaner import TextPreprocessor
 import pandas as pd
 
 df = pd.read_csv("Enter you dataset!")
