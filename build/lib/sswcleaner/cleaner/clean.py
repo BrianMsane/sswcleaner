@@ -7,7 +7,6 @@ with specific functionalities tailored for siSwati text.
 
 import re
 import string
-from collections import Counter
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -134,7 +133,7 @@ class TextPreprocessor:
         except Exception as e:
             raise e
 
-    def remove_unicode_character(self, text: str) -> str:
+    def remove_unicode_character(self, text:str) -> str:
         try:
             return re.sub(r'[^\x00-\x7F]+', '', text)
         except Exception as e:

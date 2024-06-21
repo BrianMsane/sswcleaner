@@ -1,3 +1,24 @@
+Metadata-Version: 2.1
+Name: sswcleaner
+Version: 0.1.5
+Summary: SISWATI TEXT CLEANING LIBRARY FOR NLP TASKS
+Home-page: https://github.com/BrianMsane/SiSwati-Project.git
+Author: BrianMsane
+Author-email: developer.brianmsane@gmail.com
+Maintainer: BrianMsane
+Maintainer-email: developer.brianmsane@gmail.com
+License: GNU General Public License (GPL)
+Keywords: siSwati Text Cleaner,AfricanNLP,siSwati,Research,Africa
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 
 SiSwati, or Swazi, is a Bantu language spoken by 4.7 million people in Eswatini, formerly known as Swaziland, and South Africa, as a first or second language. It is one of the African languages that are under-represented as far as NLP research is concerned. That necessitate this project. With it, we are building resources that can be used for research.
 
