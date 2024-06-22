@@ -7,7 +7,6 @@ with specific functionalities tailored for siSwati text.
 
 import re
 import string
-from collections import Counter
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -28,21 +27,22 @@ class TextPreprocessor:
 
 
     def __init__(self):
+        '''
+        Initialize some variable from the pre-processing dataset
+        '''
         try:
             self.stopwords = list(set(stopwords.words('english')))
-            
             path = '../data/'
             stop_data = pd.read_csv(path+"Stopwords.csv", usecols=['stopwords'])
             slang_data = pd.read_csv(path+'Slang.csv', usecols=['slang', 'meaning'])
             typo_data = pd.read_csv(path+'Typo.csv', usecols=['typo', 'correct_word'])
             borrowed_data = pd.read_csv(path+'Borrowed.csv', usecols=['foreign', 'siswati_version'])
-            
             self.stopwords.extend((stop_data['stopwords'].astype(str)).to_list())
             self.slang_correction_map = dict(zip(slang_data['slang'].astype(str), slang_data['meaning'].astype(str)))
             self.typo_correction_map = dict(zip(typo_data['typo'].astype(str), typo_data['correct_word'].astype(str)))
             self.borrowed_correction_map = dict(zip(borrowed_data['foreign'].astype(str), borrowed_data['siswati_version'].astype(str)))
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def clean_text(self, text: str) -> str:
@@ -83,62 +83,62 @@ class TextPreprocessor:
             text = self.resolve_borrowed_words(text)
             text = self.remove_numbers(text)
             return text
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def remove_punctuation_marks(self, text: str) -> str:
         try:
             return text.translate(str.maketrans('', '', string.punctuation))
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_numbers(self, text: str) -> str:
         try:
             return re.sub(r'\d', '', text)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_extra_spaces(self, text: str) -> str:
         try:
             return ' '.join(text.split())
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_emojis(self, text: str) -> str:
         try:
             return text.encode('ascii', 'ignore').decode('ascii')
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_emoticons(self, text: str) -> str:
         try:
             emoticon_pattern = r'[:;=][\-\^]?[D\)\]\(\]/\\OpP]'
             return re.sub(emoticon_pattern, '', text)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_tags(self, text: str) -> str:
         try:
             pattern = re.compile(r'<.*?>')
             cleaned_text = re.sub(pattern, '', text)
             return cleaned_text
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_links(self, text: str) -> str:
         try:
             url_pattern = re.compile(r'https?://\S+|www\.\S+')
             text = url_pattern.sub('', text)
             return text
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
     def remove_unicode_character(self, text: str) -> str:
         try:
             return re.sub(r'[^\x00-\x7F]+', '', text)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def remove_stopwords(self, text: str) -> str:
@@ -155,8 +155,8 @@ class TextPreprocessor:
             words = word_tokenize(text)
             filtered_words = [word for word in words if word not in self.stopwords]
             return ' '.join(filtered_words)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def add_i_end(self, text: str) -> str:
@@ -176,8 +176,8 @@ class TextPreprocessor:
             words = text.split()
             corrected_words = [word + 'i' if word[-1].lower() not in vowels else word for word in words]
             return ' '.join(corrected_words)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def resolve_slang(self, text: str) -> str:
@@ -199,8 +199,8 @@ class TextPreprocessor:
                 else:
                     corrected_words.append(word)
             return ' '.join(corrected_words)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def resolve_typos(self, text: str) -> str:
@@ -222,8 +222,8 @@ class TextPreprocessor:
                 else:
                     corrected_words.append(word)
             return ' '.join(corrected_words)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def resolve_borrowed_words(self, text: str) -> str:
@@ -245,8 +245,8 @@ class TextPreprocessor:
                 else:
                     corrected_words.append(word)
             return ' '.join(corrected_words)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
 
 
     def remove_adjacent_vowels(self, text: str) -> str:
@@ -268,5 +268,5 @@ class TextPreprocessor:
                 if i == 0 or text[i] not in vowels or text[i] != text[i-1]:
                     result.append(text[i])
             return ''.join(result)
-        except Exception as e:
-            raise e
+        except Exception:
+            raise
