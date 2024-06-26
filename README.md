@@ -28,7 +28,7 @@ pip install git+https://github.com/BrianMsane/ssw-cleaner.git
 ## Usage
 
 ```python
-from sswcleaner.cleaner import TextPreprocessor
+from sswcleaner import TextPreprocessor
 import pandas as pd
 
 df = pd.read_csv("Enter you dataset!")
