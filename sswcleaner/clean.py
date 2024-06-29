@@ -1,6 +1,5 @@
 """
 Module for text cleaning.
-
 This module provides a class and methods for preprocessing and cleaning text data, 
 with specific functionalities tailored for siSwati text.
 """
@@ -20,7 +19,6 @@ nltk.download('wordnet')
 class TextPreprocessor:
     """
         A siSwati-specific text cleaning module for NLP tasks. 
-
         This module provides various preprocessing methods tailored for cleaning siSwati text, 
         making it a useful resource for researchers and developers working with siSwati language data.
     """
@@ -49,7 +47,7 @@ class TextPreprocessor:
         """
             Clean and preprocess text data by applying various cleaning methods.
 
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
@@ -144,12 +142,10 @@ class TextPreprocessor:
     def remove_stopwords(self, text: str) -> str:
         """
             Removes English and siSwati stopwords from text.
-
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
-
         """
         try:
             words = word_tokenize(text)
@@ -164,12 +160,10 @@ class TextPreprocessor:
             Adds the vowel 'i' at the end of words with no bowel at the end. 
             In siSwati we can never have a word which ends with no vowel.
             People, use dialect to interact with each other in social media.
-
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
-
         """
         try:
             vowels = {'a', 'e', 'i', 'o', 'u'}
@@ -183,12 +177,10 @@ class TextPreprocessor:
     def resolve_slang(self, text: str) -> str:
         """
             Replaces the slang words with the corresponding siSwati word.
-
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
-
         """
         try:
             words = text.split()
@@ -206,12 +198,10 @@ class TextPreprocessor:
     def resolve_typos(self, text: str) -> str:
         """
             Removes English and siSwati stopwords from text.
-
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
-
         """
         try:
             words = text.split()
@@ -229,12 +219,10 @@ class TextPreprocessor:
     def resolve_borrowed_words(self, text: str) -> str:
         """
             Removes English and siSwati stopwords from text.
-
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
-
         """
         try:
             words = text.split()
@@ -254,12 +242,10 @@ class TextPreprocessor:
             Removes vowels that follow each other because in siSwati that is not the case and people
             tend to do it when they express their emotions and feelings. These removed vowels are the
             ones that are similar. 'aaaaaaaaeeeeiiiooouu' -> 'aeiou'
-
-            Parameters:
+            Args:
             ----------
             text : str
                 The text to be cleaned.
-
         """
         try:
             vowels = {'a', 'e', 'i', 'o', 'u'}
